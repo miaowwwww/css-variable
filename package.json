@@ -15,6 +15,17 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "css-variable",
+      "properties": {
+        "cssVariable.variableFilePath": {
+          "type": "array",
+          "default": [],
+          "description": "需要一个相对地址，用于存放生成的变量文件"
+        }
+      }
+    },
     "commands": [
       {
         "command": "css-variable.helloWorld",
