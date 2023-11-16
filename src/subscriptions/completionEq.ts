@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
-import database from "../store/variables";
-import { parse, formatHex8 } from 'culori';
+import { database } from "../store/variables";
+import { formatHex8 } from 'culori';
 
 const fs = require("fs");
 

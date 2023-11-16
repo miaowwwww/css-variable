@@ -1,7 +1,5 @@
 import * as vscode from "vscode";
-import database from "../store/variables";
-
-const fs = require("fs");
+import { database } from "../store/variables";
 
 function provideCompletionItems(
   document: vscode.TextDocument,
