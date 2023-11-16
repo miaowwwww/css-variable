@@ -9,7 +9,7 @@ function provideCompletionItems(
 ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
   const result: vscode.CompletionItem[] = [];
   database.getAll().forEach(item => {
-    let documentation = `value: ${item.value}\n\n -hex8-value: ${item.colorHex8}`;
+    let documentation = `value: ${item.value} ${item.colorHex8 ? `\n\n -hex8-value: ${item.colorHex8}` : ''}`;
 
     // 这是对biui_color的特殊处理，如果是变量，需要补充暗夜和浅色的说明
     if (item.name.indexOf('$_biui_') === 0 && item.name.indexOf('--') === -1) {
