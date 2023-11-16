@@ -3,6 +3,7 @@
   "displayName": "css-variable",
   "description": "quickfix css variable and trun css color to variable",
   "version": "0.0.1",
+  "publisher": "miaowwwww",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/miaowwwww/css-variable"
