@@ -4,21 +4,28 @@ import * as fs from 'fs';
 // import * as daftSass from  "dart-sass";
 import postcssScss from  'postcss-scss';
 import { Range, Color, Location, Position } from 'vscode';
+import { parse, formatHex8 } from 'culori';
+import { SassFilePath } from './tool';
 
 export interface CSSVariable {
+  // 变量名
   name: string;
+  // 变量值
   value: string;
-  color: string;
-  uri: string;
+  // 变量值的16进制色值 - 如果值不是color，那么这个值就是undefined
+  colorHex8: string | undefined;
+  // 源文件地址
+  filePath: SassFilePath;
+  // 在源文件的位置
   source: {
     column: number;
     line: number;
   }
 }
 
-export function sassToJson(filePath: string):CSSVariable[] {
+export function sassToJson(filePath: SassFilePath):CSSVariable[] {
   // 读取临时文件内容
-  const cssContent = fs.readFileSync(filePath, 'utf-8');
+  const cssContent = fs.readFileSync(filePath.absolutePath, 'utf-8');
 
   const ast = postcssScss.parse(cssContent);
 
@@ -26,12 +33,12 @@ export function sassToJson(filePath: string):CSSVariable[] {
 
   ast.walkDecls((decl) => {
     if (decl.prop.startsWith('$')) {
-      const variable = {
+      const variable:CSSVariable = {
         name: decl.prop,
         value: decl.value,
-        color: '', // 这个是颜色值，用来做16进制和rgba的对比
-        uri: filePath, // filePath 预留字段
-
+        colorHex8: formatHex8(decl.value),
+        filePath: filePath,
+        
         // 这个是用来做跳转的
         source: {
           column: decl.source?.start?.column || 0,
