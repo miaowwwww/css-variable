@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import { database } from "../store/variables";
 import { formatHex8 } from 'culori';
+import { subscriptionScheme } from "../constants/scheme";
 
 const fs = require("fs");
 
@@ -102,12 +103,12 @@ export default function completionVarSubscriptions(context: vscode.ExtensionCont
           );
         }
       }
-    )
+    ) 
   );
   // 注册代码建议提示，只有当按下“$”时才触发
   context.subscriptions.push(
     vscode.languages.registerCompletionItemProvider(
-      "scss",
+      subscriptionScheme,
       {
         provideCompletionItems
       },

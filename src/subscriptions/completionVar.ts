@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { database } from "../store/variables";
+import { subscriptionScheme } from "../constants/scheme";
 
 function provideCompletionItems(
   document: vscode.TextDocument,
@@ -34,7 +35,7 @@ export default function completionVarSubscriptions(context: vscode.ExtensionCont
   // 注册代码建议提示，只有当按下“$”时才触发
   context.subscriptions.push(
     vscode.languages.registerCompletionItemProvider(
-      "scss",
+      subscriptionScheme,
       {
         provideCompletionItems
       },
