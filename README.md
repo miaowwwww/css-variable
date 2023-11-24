@@ -1,8 +1,7 @@
 ### 配置
 
 **列表必须是相对路劲，不支持其他**
-![](https://cdn.jsdelivr.net/gh/miaowwwww/images-oss/1700128348.png)
-
+![](https://cdn.jsdelivr.net/gh/miaowwwww/images-oss/1700817329.png)
 
 ### 功能演示
 
